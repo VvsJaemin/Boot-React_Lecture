@@ -1,0 +1,8 @@
+package min.micro.api.user;
+
+import org.apache.catalina.User;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService {
+}
