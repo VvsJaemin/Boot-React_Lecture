@@ -5,7 +5,8 @@ import {ArticleList, ArticleWrite, ArticleDetail, ArticleUpdate} from 'article/i
 import {NewsBoard, SeoulCCTV} from 'board/index'
 import {SignUp, LoginForm, UserDetail} from 'user/index'
 import {Home, Head, Body, Footer} from 'common/index'
-import {Counter, ReduxCounter, RTKCounter} from 'counter/index'
+import {Counter, CounterContainer, CounterSliceContainer, ReduxCounter} from 'counter/index'
+import {AddTodo, CompletedTodos, ChangeTodo, TodoApp, Todos} from 'todos/index'
 
 const App = () => {
     return (
@@ -14,8 +15,8 @@ const App = () => {
 
             <Route exact="exact" path='/board/seoul-cctv' component={SeoulCCTV}></Route>
             <Route exact="exact" path='/counter/counter' component={Counter}></Route>
-            <Route exact="exact" path='/counter/redux-counter' component={ReduxCounter}></Route>
-            <Route exact="exact" path='/counter/rtk-counter' component={RTKCounter}></Route>
+            <Route exact path='/counter/redux-counter' component={CounterContainer}></Route>
+            <Route exact path='/counter/slice-container' component={CounterSliceContainer}></Route>
             <Route exact="exact" path="/board/news" component={NewsBoard}></Route>
             <Route exact="exact" path='/article/article-detail' component={ArticleDetail}></Route>
             <Route exact="exact" path='/article/article-list' component={ArticleList}></Route>
@@ -25,6 +26,12 @@ const App = () => {
             <Route exact="exact" path='/user/login-form' component={LoginForm}></Route>
             <Route exact="exact" path='/user/sign-up' component={SignUp}></Route>
             <Route exact="exact" path='/user/user-detail' component={UserDetail}></Route>
+
+            <Route exact path='/todos/add-todo' component={AddTodo}></Route>
+            <Route exact path='/todos/todo-app' component={TodoApp}></Route>
+            <Route exact path='/todos/to-dos' component={Todos}></Route>
+            <Route exact path='/todos/complete-do' component={CompletedTodos}/>
+            <Route exact path='/todos/to-do' component={ChangeTodo} />
             
 
             <Route exact="exact" path='/common/body' component={Body}></Route>

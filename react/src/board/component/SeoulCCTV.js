@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import 'common/style/Common.css'
 import 'article/style/ArticleList.css'
 const SeoulCCTV = () => {
    
-    const [items, setItems] = useState([])
+    const [items, setItems]=useState([])
 
-    useEffect(() => {
+    useEffect(()=>{
         axios.get('/data/SeoulCCTV.json')
         .then(res=>{
             setItems(res.data.DATA)
@@ -26,19 +26,21 @@ const SeoulCCTV = () => {
                 <th>카메라명칭</th>
                 <th>설명</th>
             </tr>
-            {
-                items.map((item, id)=>{
-                    return(
-                        <tr key={id}>
-                        <th>{id+1}</th>
-                        <th>{item.checktime}</th>
-                        <th>{item.deviceid}</th>
-                        <th>{item.devicename}</th>
-                        <th>{item.description}</th>
-                    </tr>
-                        )
-                })
-            }
+         {
+
+             items.map((item, id)=>{
+                 return( 
+                     <tr key={id}>
+                         <th>{id+1}</th>
+                         <th>{item.checktime}</th>
+                         <th>{item.deviceid}</th>
+                         <th>{item.devicename}</th>
+                         <th>{item.description}</th>
+                     </tr>
+                 )
+             })
+
+         }
         </table>
     </>
 )

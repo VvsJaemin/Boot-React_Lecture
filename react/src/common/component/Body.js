@@ -37,12 +37,27 @@ const Body =()=>{
                         <li>
                             <Link to={'/counter/counter'}>Counter</Link>
                         </li>
+                         <li>
+                       <Link to={'/counter/slice-container'}>슬라이스 카운터</Link>  
+                     </li>
                         <li>
                             <Link to={'/counter/redux-counter'}>ReduxCounter</Link>
                         </li>
                         <li>
-                            <Link to={'/counter/rtk-counter'}>RTKCounter</Link>
-                        </li>
+            <Link to={'/todos/to-do'}>Todo</Link>
+            </li>
+            <li>
+            <Link to={'/todos/to-dos'}>todos</Link> 
+            </li>
+            <li>
+            <Link to={'/todos/complete-do'}>CompletedTodos</Link> 
+            </li>
+            <li>
+            <Link to={'/todos/todo-app'}>TodoApp</Link> 
+            </li>
+            <li>
+            <Link to={'/todos/app-todo'}>AppTodo</Link> 
+            </li>
                     </ul>
                 </div>
             </div>
