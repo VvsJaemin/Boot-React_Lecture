@@ -18,7 +18,7 @@ const todoReducer = createSlice({
         }
 
 })
-
+// alert(JSON.stringify(todoReducer))
 const {actions, reducer} = todoReducer
 export const {addTodo, delTodo} = actions
 export default reducer

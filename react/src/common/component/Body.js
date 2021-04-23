@@ -20,14 +20,12 @@ const Body =()=>{
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">WHO</a>
+                            <Link to={'/user/user-register'}>회원가입</Link>
                         </li>
                         <li>
-                            <a href="#">WHAT</a>
+                        <Link to={'/user/user-login'}>로그인</Link>
                         </li>
-                        <li>
-                            <a href="#">WHERE</a>
-                        </li>
+                        <Link to={'/qbs/qna-register'}>Q&A</Link>
                         <li>
                             <Link to={'/board/news'}>Board</Link>
                         </li>

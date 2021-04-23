@@ -3,10 +3,11 @@ import 'App.css';
 import {Route} from 'react-router';
 import {ArticleList, ArticleWrite, ArticleDetail, ArticleUpdate} from 'article/index' 
 import {NewsBoard, SeoulCCTV} from 'board/index'
-import {SignUp, LoginForm, UserDetail} from 'user/index'
 import {Home, Head, Body, Footer} from 'common/index'
 import {Counter, CounterContainer, CounterSliceContainer, ReduxCounter} from 'counter/index'
 import {AddTodo, CompletedTodos, ChangeTodo, TodoApp, Todos} from 'todos/index'
+import {UserRegister, UserLogin} from 'user/index'
+import { QnaList, QnaRegister } from 'qbs/index';
 
 const App = () => {
     return (
@@ -23,9 +24,16 @@ const App = () => {
             <Route exact="exact" path='/article/article-update' component={ArticleUpdate}></Route>
             <Route exact="exact" path='/article/article-write' component={ArticleWrite}></Route>
 
-            <Route exact="exact" path='/user/login-form' component={LoginForm}></Route>
+            {/* <Route exact="exact" path='/user/login-form' component={LoginForm}></Route>
             <Route exact="exact" path='/user/sign-up' component={SignUp}></Route>
-            <Route exact="exact" path='/user/user-detail' component={UserDetail}></Route>
+            <Route exact="exact" path='/user/user-detail' component={UserDetail}></Route> */}
+
+            <Route exact path='/user/user-login' component={UserLogin}></Route>
+            <Route exact path='/user/user-register' component={UserRegister}></Route>
+
+            <Route exact path='/qbs/qna-register' component={QnaRegister}></Route>
+            <Route exact path='/qbsr/qna-list' component={QnaList}></Route>
+
 
             <Route exact path='/todos/add-todo' component={AddTodo}></Route>
             <Route exact path='/todos/todo-app' component={TodoApp}></Route>
