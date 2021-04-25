@@ -5,7 +5,7 @@ import {ArticleList, ArticleWrite, ArticleDetail, ArticleUpdate} from 'article/i
 import {NewsBoard, SeoulCCTV} from 'board/index'
 import {Home, Head, Body, Footer} from 'common/index'
 import {Counter, CounterContainer, CounterSliceContainer, ReduxCounter} from 'counter/index'
-import {AddTodo, CompletedTodos, ChangeTodo, TodoApp, Todos} from 'todos/index'
+import {AddTodo, TodoApp, Todos} from 'todos/index'
 import {UserRegister, UserLogin} from 'user/index'
 import { QnaList, QnaRegister } from 'qbs/index';
 
@@ -38,8 +38,7 @@ const App = () => {
             <Route exact path='/todos/add-todo' component={AddTodo}></Route>
             <Route exact path='/todos/todo-app' component={TodoApp}></Route>
             <Route exact path='/todos/to-dos' component={Todos}></Route>
-            <Route exact path='/todos/complete-do' component={CompletedTodos}/>
-            <Route exact path='/todos/to-do' component={ChangeTodo} />
+ 
             
 
             <Route exact="exact" path='/common/body' component={Body}></Route>

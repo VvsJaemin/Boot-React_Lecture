@@ -48,9 +48,6 @@ const Body =()=>{
             <Link to={'/todos/to-dos'}>todos</Link> 
             </li>
             <li>
-            <Link to={'/todos/complete-do'}>CompletedTodos</Link> 
-            </li>
-            <li>
             <Link to={'/todos/todo-app'}>TodoApp</Link> 
             </li>
             <li>
