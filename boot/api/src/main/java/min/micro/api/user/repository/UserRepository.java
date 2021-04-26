@@ -1,6 +1,5 @@
 package min.micro.api.user.repository;
 
-import min.micro.api.user.UserVo;
 import min.micro.api.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

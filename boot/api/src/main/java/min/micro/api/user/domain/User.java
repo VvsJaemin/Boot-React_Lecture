@@ -1,14 +1,16 @@
 package min.micro.api.user.domain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @NoArgsConstructor
 @Getter
-@Table(name = "users")
+@Table(name = "members")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,8 +33,7 @@ public class User {
     @Column(name="gender") private String gender;
 
     public User toEntity() {
-        return User
-                .builder()
+        return User.builder()
                 .userNo(userNo)
                 .password(password)
                 .username(username)

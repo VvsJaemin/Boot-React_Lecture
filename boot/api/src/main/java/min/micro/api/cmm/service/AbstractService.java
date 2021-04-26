@@ -3,8 +3,8 @@ package min.micro.api.cmm.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.qbs.domain.QnaBoard;
-import com.example.demo.qbs.domain.QnaBoardDto;
+import min.micro.api.qbs.domain.QnaBoard;
+import min.micro.api.qbs.domain.QnaBoardDto;
 import min.micro.api.qbs.domain.QnaBoard;
 
 public abstract class AbstractService<T> {

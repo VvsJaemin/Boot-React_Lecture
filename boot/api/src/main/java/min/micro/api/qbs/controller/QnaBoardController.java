@@ -2,8 +2,14 @@ package min.micro.api.qbs.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import min.micro.api.qbs.domain.QnaBoard;
+import min.micro.api.qbs.service.QnaBoardServiceImpl;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @Log
 @RequiredArgsConstructor

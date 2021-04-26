@@ -1,6 +1,14 @@
 package min.micro.api.qbs.domain;
 
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import java.io.Serializable;
+import java.util.Date;
+
 @Getter
 @ToString
 @NoArgsConstructor
@@ -11,6 +19,7 @@ public class QnaBoardDto implements Serializable {
     private String writer;
     private String content;
     private Date regDate;
+    private String comments;
 
 
 
@@ -22,17 +31,19 @@ public class QnaBoardDto implements Serializable {
                 .writer(writer)
                 .content(content)
                 .regDate(regDate)
+                .comments(comments)
                 .build();
 
     }
 
     @Builder
-    public QnaBoardDto(long boardNo, String title, String writer, String content, Date regDate) {
+    public QnaBoardDto(long boardNo, String title, String writer, String content, Date regDate, String comments) {
         this.boardNo = boardNo;
         this.title = title;
         this.writer = writer;
         this.content = content;
         this.regDate = regDate;
+        this.comments=comments;
 
     }
 

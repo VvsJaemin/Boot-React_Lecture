@@ -6,7 +6,7 @@ import {addTodo, delTodo, delTodos, toggleTodo} from 'todos/reducer/todo.reducer
 
 const TodoApp =()=>{
 
-    const todos = useSelector(state=>(state.todoReducer))
+    const todos = useSelector(state=>(state.todos))
 
     alert(`useSelector :` + JSON.stringify(todos))
 

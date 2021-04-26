@@ -1,6 +1,15 @@
 package min.micro.api.qbs.service;
 
 
+import lombok.AllArgsConstructor;
+import min.micro.api.cmm.service.AbstractService;
+import min.micro.api.qbs.domain.QnaBoard;
+import min.micro.api.qbs.repository.QnaBoardRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class QnaBoardServiceImpl extends AbstractService<QnaBoard> implements QnaBoardService {

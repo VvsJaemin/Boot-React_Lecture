@@ -2,9 +2,14 @@ package min.micro.api.user.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
+import min.micro.api.cmm.service.UserAbstractService;
+import min.micro.api.user.domain.User;
 import min.micro.api.user.repository.UserRepository;
-import min.micro.api.user.service.UserService;
+import min.micro.api.user.service.UserSevice;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @Log

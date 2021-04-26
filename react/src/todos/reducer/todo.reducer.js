@@ -7,7 +7,7 @@ const initialState =[
     {id : 3, text : '썽크 학습', done : false}
 ]
 
-const todoReducer = createSlice({
+const todoSlice = createSlice({
     name : 'todos',
     initialState,
     reducers:{
@@ -36,6 +36,6 @@ const todoReducer = createSlice({
 
 })
 // alert(JSON.stringify(todoReducer))
-const {actions, reducer} = todoReducer
+const {actions, reducer} = todoSlice
 export const {addTodo, delTodo, delTodos, toggleTodo} = actions
 export default reducer

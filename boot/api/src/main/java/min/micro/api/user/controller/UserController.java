@@ -1,7 +1,7 @@
 package min.micro.api.user.controller;
 
-import com.example.demo.uss.domain.User;
-import com.example.demo.uss.service.UserServiceImpl;
+import min.micro.api.user.domain.User;
+import min.micro.api.user.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.http.HttpStatus;
@@ -36,12 +36,8 @@ public class UserController {
 
         String login = service.login(user.getUsername(), user.getPassword());
 
-        System
-                .out
-                .println(user.getUsername());
-        System
-                .out
-                .println(user.getPassword());
+        System.out.println(user.getUsername());
+        System.out.println(user.getPassword());
 
         if (login != null) {
             log.info("로그인 성공");

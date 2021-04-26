@@ -7,10 +7,10 @@ import {BrowserRouter} from 'react-router-dom';
 // import counterReducer from 'counter/reducer/counter.reducer'
 import {Provider} from 'react-redux'
 import {createStore, combineReducers} from 'redux'
-import todoReducer from 'todos/reducer/todo.reducer'
+import todos from 'todos/reducer/todo.reducer'
 import counterSlice from 'counter/reducer/counter.slice'
 import { configureStore } from '@reduxjs/toolkit'
-const rootReducer = combineReducers({todoReducer, counterSlice})
+const rootReducer = combineReducers({todos, counterSlice})
 // const store = createStore(rootReducer) 바닐라 리덕스 
 const store = configureStore({reducer : rootReducer})
 ReactDOM.render(

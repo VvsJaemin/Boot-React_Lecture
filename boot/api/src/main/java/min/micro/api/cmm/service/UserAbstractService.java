@@ -3,9 +3,9 @@ package min.micro.api.cmm.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.uss.domain.User;
+import min.micro.api.user.domain.User;
 
-public  abstract class UserAbstractService<T> {
+public abstract class UserAbstractService<T> {
     public abstract long count();
     public abstract boolean existsById(long id);
     public abstract List<T> findAll();
