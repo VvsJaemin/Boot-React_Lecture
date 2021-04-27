@@ -21,6 +21,10 @@ class Student implements Comparable<Student> {
         this.userName = userName;
     }
 
+    public void setUserName(String userName){
+        this.userName=userName;
+    }
+
 
     public String getUserName() {
         return this.userName;
@@ -40,7 +44,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return String.format("[%s, %d, %d, %s]", userName, grade, score, name);
+        return String.format("[%s, %d, %d, %s]", name, grade, score, userName);
     }
 
     @Override
@@ -79,7 +83,6 @@ public class StreamMain {
         return Stream.of(
                 new Student(dum.makeName(), dum.makeUsername(), rangeBelowRandom.apply(1, 3), rangeBelowRandom.apply(0, 100)),
                 new Student(dum.makeName(), dum.makeUsername(), rangeBelowRandom.apply(1, 3), rangeBelowRandom.apply(0, 100)),
-                new Student(dum.makeName(), dum.makeUsername(), rangeBelowRandom.apply(1, 3), rangeBelowRandom.apply(0, 100)),
                 new Student(dum.makeName(), dum.makeUsername(), rangeBelowRandom.apply(1, 3), rangeBelowRandom.apply(0, 100)));
 
     }
@@ -97,9 +100,12 @@ public class StreamMain {
     }
 
 
-    public static Stream<String> ascUsername() {
+    public static Stream<Student> ascUsername() {
 
-        return makeStream().map(Student::toString).map(String::toLowerCase).distinct().sorted(String.CASE_INSENSITIVE_ORDER);
+        return makeStream().map(student->{
+            student.setUserName(student.getUserName().toLowerCase());
+            return student;
+        }).distinct().sorted(Comparator.comparing((Student::getUserName)).thenComparing(Comparator.naturalOrder()));
     }
 //        StreamUtil util = new StreamUtil();
 //        util.arrayToList(new String [] {"a", "a"}).stream().sorted().collect(Collectors.toList());
