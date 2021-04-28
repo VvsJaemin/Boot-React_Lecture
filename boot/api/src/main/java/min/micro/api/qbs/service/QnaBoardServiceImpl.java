@@ -17,45 +17,43 @@ public class QnaBoardServiceImpl extends AbstractService<QnaBoard> implements Qn
     private final QnaBoardRepository repo;
 
 
-    @Override public long count() {
-        // TODO Auto-generated method stub
-        return 0;
-    }
-
-    @Override public boolean existsById(long id) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override public List<QnaBoard> findAll() {
-        // TODO Auto-generated method stub
-        return repo.findAll();
-    }
-
-    @Override public Optional<QnaBoard> findOne() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override public void deleteById(long id) {
-        repo.deleteById(id);
-    }
-
-    @Override public QnaBoard getOne(long id) {
-        // TODO Auto-generated method stub
-        return repo.getOne(id);
-    }
-
-    @Override public QnaBoard save(QnaBoard entity) {
-        // TODO Auto-generated method stub
+    @Override
+    public QnaBoard save(QnaBoard entity) {
         return repo.save(entity);
     }
 
-    @Override public Optional<QnaBoard> findById(long id) {
-
+    @Override
+    public Optional<QnaBoard> findById(long id) {
         return repo.findById(id);
     }
 
+    @Override
+    public List<QnaBoard> findAll() {
+        return repo.findAll();
+    }
 
+    @Override
+    public int count() {
+        return 0;
+    }
 
+    @Override
+    public QnaBoard getOne(long id) {
+        return repo.getOne(id);
+    }
+
+    @Override
+    public Long delete(QnaBoard qnaBoard) {
+        return null;
+    }
+
+    @Override
+    public Boolean existsById(long id) {
+        return false;
+    }
+
+    @Override
+    public void deleteById(long id) {
+        repo.deleteById(id);
+    }
 }

@@ -2,6 +2,8 @@ package min.micro.api.stream;
 
 import java.util.Arrays;
 import java.util.List;
+
+
 import static min.micro.api.stream.RefUtil.*;
 import static java.util.Collections.shuffle;
 
@@ -46,7 +48,17 @@ public class DummyGenerator {
         List<String> id = Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split(""));
         shuffle(id);
         id.subList(0, 5);
-        return id.get(0)+id.get(1)+id.get(2)+id.get(3)+id.get(4);
+        StringBuffer sb = new StringBuffer();
+        for(int i =0; i<5; i++){
+            sb.append(id.get(i));
+        }
+        /*
+        * sb.insert(index, "<입력값>")
+        * sb.replace(index, sb.length(), "<대체값>")
+        * sb.delete(start index, end index)
+        * sb.deleteCharAt(index)
+        * */
+        return sb.toString();
     }
 
     public String makeEmail() {

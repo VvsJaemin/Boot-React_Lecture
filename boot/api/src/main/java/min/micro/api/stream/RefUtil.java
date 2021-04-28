@@ -10,6 +10,7 @@ public class RefUtil {
     public static Consumer<String> print = System.out::print;
     public static Function<Object, String> string = String::valueOf;
     public static Function<String, Integer> integer = Integer::parseInt;
+    public static BiFunction<String, String, Boolean> equals = String :: equals;
 
 
     public static Function<Double,Double> abs = Math::abs;
