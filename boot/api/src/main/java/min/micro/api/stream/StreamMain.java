@@ -21,9 +21,21 @@ class Student implements Comparable<Student> {
         this.userName = userName;
     }
 
-    public void setUserName(String userName){ // 매개변수
-        this.userName=userName; // 인스턴스 변수 초기화 ( 인스턴스 변수 = 매개변수)
-         }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
+    }
+
+    public void setUserName(String userName) { // 매개변수
+        this.userName = userName; // 인스턴스 변수 초기화 ( 인스턴스 변수 = 매개변수)
+    }
 
 
     public String getUserName() {
@@ -49,7 +61,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        return o.score - score;
+        return o.getScore()- score;
     }
 
 }
@@ -58,7 +70,7 @@ public class StreamMain {
     public static void main(String... args) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("메뉴 : 0.EXIT 1.학년 오름 차순  2. 학년별 성적 내림차순  3. 전학년 성적내림차순 " +
+            System.out.println("메뉴: 0.EXIT 1.학년오름차순 2. 학년별 성적내림차순  3.전학년 성적내림차순 " +
                     "4.이름오름차순 5.ID오름차순");
             switch (scanner.nextInt()) {
                 case 0:
@@ -93,20 +105,19 @@ public class StreamMain {
 
     public static Stream<Student> ascGrade() {
         return makeStream()
-                .sorted(Comparator.comparing((Student::getGrade))
-                        .thenComparing(Comparator.naturalOrder())); // Comparable compareTo에 해당
+                .sorted(Comparator.comparing(Student::getGrade) //Comparator.comparing(String s)
+                    .thenComparing(Comparator.naturalOrder()));// Comparable compareTo에 해당
     }
 
-    public static Stream<Student> descGrade(){
+    public static Stream<Student> descGrade() {
         return makeStream()
-                .sorted(Comparator.comparing((Student::getGrade))
-                .reversed()
-                .thenComparing(Comparator.naturalOrder()));
+                .sorted(Comparator.comparing((Student::getGrade)).reversed() //Comparator.comparing(String s)
+                        .thenComparing(Comparator.naturalOrder())); // Comparable compareTo(Object o)
     }
 
     public static Stream<Student> descScore() {
         return makeStream()
-                .sorted(Comparator.naturalOrder());
+                .sorted(Comparator.naturalOrder()); // Comparable compareTo(Object o)
     }
 
     public static Stream<Student> ascName() {
@@ -118,7 +129,9 @@ public class StreamMain {
 
     public static Stream<Student> ascUsername() {
 
-        return makeStream().distinct().sorted(Comparator.comparing((Student::getUserName)));
+        return makeStream()
+                .distinct()
+                    .sorted(Comparator.comparing((Student::getUserName)));
     }
 //        StreamUtil util = new StreamUtil();
 //        util.arrayToList(new String [] {"a", "a"}).stream().sorted().collect(Collectors.toList());

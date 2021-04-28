@@ -51,6 +51,8 @@ public class DummyGenerator {
         StringBuffer sb = new StringBuffer();
         for(int i =0; i<5; i++){
             sb.append(id.get(i));
+
+
         }
         /*
         * sb.insert(index, "<입력값>")
