@@ -2,7 +2,9 @@ package min.micro.api.qbs.service;
 
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import min.micro.api.cmm.service.AbstractService;
+import min.micro.api.news.domain.News;
 import min.micro.api.qbs.domain.QnaBoard;
 import min.micro.api.qbs.repository.QnaBoardRepository;
 import org.springframework.stereotype.Service;
@@ -11,15 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class QnaBoardServiceImpl extends AbstractService<QnaBoard> implements QnaBoardService {
 
     private final QnaBoardRepository repo;
 
 
     @Override
-    public QnaBoard save(QnaBoard entity) {
-        return repo.save(entity);
+    public Long save(QnaBoard entity) {
+        return  (repo.save(entity) != null) ? 1L : 0L;
     }
 
     @Override
@@ -38,8 +40,8 @@ public class QnaBoardServiceImpl extends AbstractService<QnaBoard> implements Qn
     }
 
     @Override
-    public QnaBoard getOne(long id) {
-        return repo.getOne(id);
+    public Optional<QnaBoard> getOne(long id) {
+        return Optional.of(repo.getOne(id));
     }
 
     @Override

@@ -18,6 +18,7 @@ public class ReviewController extends AbstractController<Review> {
 
     private final ReviewServiceImpl service;
 
+
     @PostMapping("")
     public ResponseEntity<Long> save(Review review) {
         return ResponseEntity.ok(service.save(review));

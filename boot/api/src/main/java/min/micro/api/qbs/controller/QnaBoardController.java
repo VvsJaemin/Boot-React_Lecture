@@ -47,14 +47,13 @@ public class QnaBoardController {
     @PutMapping("/modify/{boardNo}")
     public ResponseEntity<QnaBoard> modify(
             @PathVariable("boardNo")long boardNo,
-            @RequestBody QnaBoard qnaboard
-    ) {
+            @RequestBody QnaBoard qnaboard) {
 
         log.info("Put - modify()");
         log.info("boardNo long: " + boardNo);
         log.info("boardNo entity: " + qnaboard.getBoardNo());
-
-        return new ResponseEntity<>(service.save(qnaboard), HttpStatus.OK);
+         service.save(qnaboard);
+        return new ResponseEntity<>(qnaboard, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{boardNo}")

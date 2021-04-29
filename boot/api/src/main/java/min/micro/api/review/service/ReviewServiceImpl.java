@@ -15,9 +15,10 @@ public class ReviewServiceImpl extends AbstractService<Review> implements Review
 
     private final ReviewRepository repository;
 
+
     @Override
-    public Review save(Review review) {
-        return repository.save(review) != null ? 1L : 0;
+    public Long save(Review review) {
+        return (repository.save(review) != null) ? 1L : 0L;
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ReviewServiceImpl extends AbstractService<Review> implements Review
     }
 
     @Override
-    public Review getOne(long id) {
+    public Optional<Review> getOne(long id) {
         return null;
     }
 

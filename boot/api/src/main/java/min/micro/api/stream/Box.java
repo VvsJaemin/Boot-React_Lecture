@@ -10,6 +10,10 @@ public class Box<T> {
         map = new HashMap<String, T>();
     }
 
+    public Box(HashMap<String, T> map) {
+        this.map = map;
+    }
+
     public void clear() {
         map.clear();
     }

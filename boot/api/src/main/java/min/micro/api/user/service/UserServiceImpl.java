@@ -1,6 +1,7 @@
 package min.micro.api.user.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 @Log
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserServiceImpl extends AbstractService<User> implements UserSevice {
 
     private final UserRepository repo;
@@ -43,8 +44,8 @@ public class UserServiceImpl extends AbstractService<User> implements UserSevice
     }
 
     @Override
-    public User save(User entity) {
-        return repo.save(entity);
+    public Long save(User entity) {
+        return (repo.save(entity) != null) ? 1L : 0L;
     }
 
     @Override
@@ -63,7 +64,7 @@ public class UserServiceImpl extends AbstractService<User> implements UserSevice
     }
 
     @Override
-    public User getOne(long id) {
+    public Optional<User> getOne(long id) {
         return null;
     }
 

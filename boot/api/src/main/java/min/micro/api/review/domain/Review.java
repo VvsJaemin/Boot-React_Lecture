@@ -10,5 +10,5 @@ import javax.persistence.Table;
 public class Review {
     @Id
     @Column(name="review_id")
-    private Long reviewId;
+    private long reviewId;
 }

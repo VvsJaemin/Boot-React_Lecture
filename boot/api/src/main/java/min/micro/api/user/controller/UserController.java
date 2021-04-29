@@ -70,8 +70,8 @@ public class UserController {
         log.info("put modify()" + user);
 
         log.info("username : " + username);
-
-        return new ResponseEntity<>(service.save(user), HttpStatus.OK);
+        service.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{username}")
