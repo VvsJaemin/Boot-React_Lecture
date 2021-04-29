@@ -9,6 +9,7 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.Option;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Lazy
 @RequiredArgsConstructor // 상태를 변경할 수 없도록 생성자 주입(무상태)
 @Log
 public class NewsServiceImpl extends AbstractService<News> implements NewsService {
@@ -51,14 +53,10 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
 
     @Override
     public Long saveAll(String category) throws IOException {
-//        Document document = connectUrl("https://news.daum.net/" + category);
-//        Document bugsdocument = connectUrl("https://music.bugs.co.kr/" + category); // jsoup 불변객체
         Document cgvdocument = connectUrl("http://www.cgv.co.kr/" + category); // jsoup 불변객체
         repository.deleteAll();
 
-//        Elements elements = document.select("div.cont_aside>ol>li>strong>a");
-//        Elements bugselements = bugsdocument.select("table.list>tbody td>p>a");
-        Elements cgvelements = cgvdocument.select("div.box-image>strong.rank>a>strong.no1");
+        Elements cgvelements = cgvdocument.select("div.sect-movie-chart>ol>li>div.box-image>strong");
         int count = 0;
         for (int i = 0; i < cgvelements.size(); i++) {
             News news = new News();
