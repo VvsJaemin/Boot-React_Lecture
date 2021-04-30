@@ -1,6 +1,8 @@
 package min.micro.api.user.controller;
 
+import min.micro.api.news.domain.News;
 import min.micro.api.user.domain.User;
+import min.micro.api.user.domain.UserVo;
 import min.micro.api.user.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
@@ -10,16 +12,18 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Log
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 @CrossOrigin("*")
 public class UserController {
 
     private final UserServiceImpl service;
+
 
     @PostMapping("")
     public ResponseEntity<?> save(@Validated @RequestBody User user) {

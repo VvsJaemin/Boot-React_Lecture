@@ -2,18 +2,20 @@ package min.micro.api.news.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import min.micro.api.cmm.domain.Crawler;
 import min.micro.api.cmm.service.AbstractService;
+import min.micro.api.cmm.service.CrawlerServiceImpl;
 import min.micro.api.news.domain.News;
 import min.micro.api.news.repository.NewsRepository;
-import org.jsoup.Connection;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,20 +28,6 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
 
     private final NewsRepository repository; // final - >  상수처리 - > 무상태
 
-    @Override
-    public Document connectUrl(String url) throws IOException {
-        log.info("connectUrl() : " + url);
-
-        return Jsoup.connect(url) // 클래스 안에 이너클래스
-                .method(Connection.Method.GET)
-                .userAgent("Mozilla/5.0 (X11; Linux x86_64; rv:10.0) " +
-                        "Gecko/20100101 Firefox/10.0 " +
-                        "AppleWebKit/537.36 (KHTML, like Gecko) " +
-                        "Chrome/51.0.2704.106 Safari/537.36")
-                .execute().parse();
-
-
-    }
 
     @Override
     public List<News> newsFindAll() {
@@ -52,37 +40,33 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
     }
 
     @Override
-    public Long saveAll(String category) throws IOException {
-        Document cgvdocument = connectUrl("http://www.cgv.co.kr/" + category); // jsoup 불변객체
+    public List<News> saveAll(Crawler crawler) throws IOException {
+        Document document = CrawlerServiceImpl.connectUrl(crawler.getUrl()); // jsoup 불변객체, https
         repository.deleteAll();
-
-        Elements cgvelements = cgvdocument.select("div.sect-movie-chart>ol>li>div.box-image>strong");
-        int count = 0;
-        for (int i = 0; i < cgvelements.size(); i++) {
+        Elements elements = document.select(crawler.getCssQuery());
+        //"div.sect-movie-chart>ol>li>div.box-image>strong"
+        List<News> newslist = new ArrayList<>();
+        for (int i = 0; i < elements.size(); i++) {
             News news = new News();
 
-            news.setTitle(cgvelements.get(i).text());
-            news.setAddress(cgvelements.get(i).attr("href"));
-            news.setCategory(category);
-//           repository.save(news);
+            news.setTitle(elements.get(i).text());
+            news.setAddress(elements.get(i).attr("href"));
+            news.setCategory(crawler.getCategory());
+            newslist.add(news);
+            repository.save(news);
 
-            count++;
-
-            System.out.println("************** News 정보" + news.toString());
         }
-        System.out.println("************** 크롤링 카운트" + count);
-        return 0L;
+        return newslist;
+    }
+
+    @Override
+    public Optional<News> findByNewsId(String newsId) {
+        return Optional.empty();
     }
 
 
     @Override
-    public Optional<News> findByNewsNo(String newsNo) {
-        Optional.ofNullable(repository.findByNewsNo(newsNo)).ifPresent(System.out::println);
-        return Optional.ofNullable(repository.findByNewsNo(newsNo)); // 뉴스 게시글이 안보일 때 null 발생이 생기니 ofNullable 메서드 사용
-    }
-
-    @Override
-    public void OptionalInit(String newsNo) {
+    public void OptionalInit(String newsId) {
         Optional<String> optVal = Optional.empty(); // Optional Initializer
     }
 
@@ -102,8 +86,8 @@ public class NewsServiceImpl extends AbstractService<News> implements NewsServic
     }
 
     @Override
-    public List<News> findAll() {
-        return repository.findAll();
+    public Page<News> findAll(Pageable pageable) {
+        return null;
     }
 
     @Override

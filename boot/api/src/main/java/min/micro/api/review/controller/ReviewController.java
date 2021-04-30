@@ -6,6 +6,7 @@ import min.micro.api.review.domain.Review;
 import min.micro.api.review.service.ReviewServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/reviews")
 public class ReviewController extends AbstractController<Review> {
 
     private final ReviewServiceImpl service;

@@ -7,6 +7,8 @@ import min.micro.api.cmm.service.AbstractService;
 import min.micro.api.news.domain.News;
 import min.micro.api.qbs.domain.QnaBoard;
 import min.micro.api.qbs.repository.QnaBoardRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public class QnaBoardServiceImpl extends AbstractService<QnaBoard> implements Qn
     }
 
     @Override
-    public List<QnaBoard> findAll() {
-        return repo.findAll();
+    public Page<QnaBoard> findAll(Pageable pageable) {
+        return null;
     }
 
     @Override

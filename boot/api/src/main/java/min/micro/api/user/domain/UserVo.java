@@ -1,4 +1,4 @@
-package min.micro.api.user;
+package min.micro.api.user.domain;
 
 
 import javax.persistence.*;

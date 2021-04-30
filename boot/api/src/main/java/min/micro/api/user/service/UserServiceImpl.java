@@ -8,6 +8,8 @@ import lombok.extern.java.Log;
 import min.micro.api.cmm.service.AbstractService;
 import min.micro.api.user.domain.User;
 import min.micro.api.user.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,8 +56,8 @@ public class UserServiceImpl extends AbstractService<User> implements UserSevice
     }
 
     @Override
-    public List<User> findAll() {
-        return repo.findAll();
+    public Page<User> findAll(Pageable pageable) {
+        return null;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package min.micro.api.cmm.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +12,7 @@ public abstract class AbstractService<T> {
 
     public abstract Optional<T> findById(long id);
 
-    public abstract List<T> findAll();
+    public abstract Page<T> findAll(Pageable pageable);
 
     public abstract int count();
 

@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import min.micro.api.qbs.domain.QnaBoard;
 import min.micro.api.qbs.service.QnaBoardServiceImpl;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,11 +32,11 @@ public class QnaBoardController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<QnaBoard>> list() {
+    public ResponseEntity<Page<QnaBoard>> list(final Pageable pageable) {
 
         log.info("list()");
 
-        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(service.findAll(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/read/{id}")

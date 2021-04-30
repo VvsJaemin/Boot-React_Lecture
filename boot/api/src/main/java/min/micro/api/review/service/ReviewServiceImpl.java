@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import min.micro.api.cmm.service.AbstractService;
 import min.micro.api.review.domain.Review;
 import min.micro.api.review.repository.ReviewRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +29,7 @@ public class ReviewServiceImpl extends AbstractService<Review> implements Review
     }
 
     @Override
-    public List<Review> findAll() {
+    public Page<Review> findAll(Pageable pageable) {
         return null;
     }
 
