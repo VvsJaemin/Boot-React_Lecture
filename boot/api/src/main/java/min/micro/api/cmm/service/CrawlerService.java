@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CrawlerService {
     List<?> scrapBugs(Crawler crawler) throws IOException;
+    List<?> scrapNews(Crawler crawler) throws IOException;
+    List<?> scrapCgv(Crawler crawler) throws  IOException;
 }
