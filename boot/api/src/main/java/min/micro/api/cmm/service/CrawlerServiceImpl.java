@@ -33,15 +33,15 @@ public class CrawlerServiceImpl implements CrawlerService {
 
     @Override
     public List<?> scrapBugs(Crawler crawler) throws IOException {
-        Document document = connectUrl(crawler.getUrl()); // jsoup 불변객체, "https://news.daum.net/society"
+        Document bugsdocument = connectUrl(crawler.getUrl()); // jsoup 불변객체, "https://news.daum.net/society"
         //List<>
-        Elements elements = document.select(crawler.getCssQuery());
+        Elements bugselements = bugsdocument.select(crawler.getCssQuery());
         //"div.sect-movie-chart>ol>li>div.box-image>strong"
-        for (int i = 0; i < elements.size(); i++) {
-            News news = new News();
-            news.setTitle(elements.get(i).text());
-            news.setAddress(elements.get(i).attr("href"));
-            news.setCategory(crawler.getCategory());
+        for (int i = 0; i < bugselements.size(); i++) {
+            Bugs bugs = new Bugs();
+            bugs.setTitle(bugselements.get(i).text());
+            bugs.setAddress(bugselements.get(i).attr("href"));
+            bugs.setCategory(crawler.getCategory());
         }
 //        return repository.count() > 0L ? 1L: 0L;
         return null;
@@ -53,10 +53,10 @@ public class CrawlerServiceImpl implements CrawlerService {
         Document document = new Document(crawler.getUrl());
         Elements elements = document.select(crawler.getCssQuery());
         for (int i = 0; i < elements.size(); i++) {
-            Bugs bugs = new Bugs();
-            bugs.setTitle(elements.get(i).text());
-            bugs.setAddress(elements.get(i).attr("href"));
-            bugs.setCategory(crawler.getCategory());
+            News news = new News();
+            news.setTitle(elements.get(i).text());
+            news.setAddress(elements.get(i).attr("href"));
+            news.setCategory(crawler.getCategory());
         }
 
         return null;
@@ -64,14 +64,14 @@ public class CrawlerServiceImpl implements CrawlerService {
 
     @Override
     public List<?> scrapCgv(Crawler crawler) throws IOException {
-        Document document = new Document(crawler.getUrl()); //http://www.cgv.co.kr/movies/
-        Elements elements = document.select(crawler.getCssQuery());
+        Document cgvdocument = new Document(crawler.getUrl()); //http://www.cgv.co.kr/movies/
+        Elements cgvelements = cgvdocument.select(crawler.getCssQuery());
 
-        for (int i = 0; i < elements.size(); i++) {
+        for (int i = 0; i < cgvelements.size(); i++) {
             Cgv cgv = new Cgv();
 
-            cgv.setTitle(elements.get(i).text());
-            cgv.setAddress(elements.get(i).attr("href"));
+            cgv.setTitle(cgvelements.get(i).text());
+            cgv.setAddress(cgvelements.get(i).attr("href"));
             cgv.setCategory(cgv.getCategory());
 
         }
