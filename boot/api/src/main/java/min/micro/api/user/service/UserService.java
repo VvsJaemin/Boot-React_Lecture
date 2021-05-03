@@ -1,17 +1,8 @@
 package min.micro.api.user.service;
 
-import min.micro.api.user.domain.User;
+import min.micro.api.user.domain.UserDto;
 
-import java.util.Optional;
+public interface UserService {
 
- interface UserSevice {
-
-    String login(String username, String password)throws Exception;
-
-    Optional<User> findByUsername (String username);
-
-    void deleteByUsername (String username);
-
-    boolean existsByUsername(String username);
-
+    long signup(UserDto user);
 }

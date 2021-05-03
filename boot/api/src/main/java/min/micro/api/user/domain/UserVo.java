@@ -2,24 +2,26 @@ package min.micro.api.user.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserVo {
 
     @Id
-    @GeneratedValue
-
-    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long userId;
-    @Column(name = "username")
+    @Column(unique=true, nullable=false)
     private String username;
-    @Column(name = "password")
+    @Size(min=8, message="Minimum Password Length: 8characters")
     private String password;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "birth")
-    private String birth;
-    @Column(name = "email")
+    @Column(unique=true, nullable=false)
     private String email;
+    @Column(unique=true, nullable=false)
+    private String name;
+
+    @ElementCollection(fetch=FetchType.EAGER)
+    List<Role> roles;
+
 }

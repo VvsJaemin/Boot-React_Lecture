@@ -42,10 +42,11 @@ dependencies {
 	compile group: 'com.google.code.gson', name: 'gson', version: '2.7'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.4.5'
 	implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
 	compile 'org.jsoup:jsoup:1.13.1'
-//	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.4.2'
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-	// testCompile group: 'org.springframework.security', name: 'spring-security-test', version: '5.4.2'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.security:spring-security-test'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.4.4'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

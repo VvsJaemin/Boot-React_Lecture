@@ -1,5 +1,6 @@
 package min.micro.api.user.domain;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -7,36 +8,23 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import java.io.Serializable;
+import java.util.List;
 
-@Getter
-@NoArgsConstructor
-public class UserDto implements Serializable {
-    private static final long serialVersionUID  = 1L;
-    private long userNo;
+@Data
+public class UserDto {
+
+    @ApiModelProperty(position = 0)
     private String username;
-    private String password;
-    private String name;
+    @ApiModelProperty(position = 1)
     private String email;
-    private String birthday;
-    private String gender;
-
-    @Builder
-    public UserDto(long userNo, String username, String password, String name, String email, String birthday,
-                   String gender) {
-        this.userNo = userNo;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.email = email;
-        this.birthday = birthday;
-        this.gender = gender;
-    }
-
-
-
-
-
+    @ApiModelProperty(position = 2)
+    private String password;
+    @ApiModelProperty(position = 3)
+    private String name;
+    @ApiModelProperty(position = 4)
+    private List<Role> roles;
 
 
 }

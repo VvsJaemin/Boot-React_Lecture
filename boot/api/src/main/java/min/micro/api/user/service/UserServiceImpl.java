@@ -1,87 +1,82 @@
 package min.micro.api.user.service;
 
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 
-import min.micro.api.cmm.service.AbstractService;
-import min.micro.api.user.domain.User;
-import min.micro.api.user.repository.UserRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import min.micro.api.user.domain.UserDto;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 
 @Log
 @Service
-@RequiredArgsConstructor
-public class UserServiceImpl extends AbstractService<User> implements UserSevice {
-
-    private final UserRepository repo;
-
-
+public class UserServiceImpl implements UserService {
 
     @Override
-    public String login(String username, String password) throws Exception {
-        return repo.login(username,password);
-    }
-
-    @Override
-    public Optional<User> findByUsername(String username) {
-        return repo.findByUsername(username);
-    }
-
-    @Override
-    public void deleteByUsername(String username) {
-        repo.deleteByUsername(username);
-    }
-
-    @Override
-    public boolean existsByUsername(String username) {
-        return repo.existsByUsername(username);
-    }
-
-    @Override
-    public Long save(User entity) {
-        return (repo.save(entity) != null) ? 1L : 0L;
-    }
-
-    @Override
-    public Optional<User> findById(long id) {
-        return repo.findById(id);
-    }
-
-    @Override
-    public Page<User> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public int count() {
+    public long signup(UserDto user) {
         return 0;
     }
 
-    @Override
-    public Optional<User> getOne(long id) {
-        return null;
-    }
-
-    @Override
-    public Long delete(User user) {
-        return null;
-    }
-
-    @Override
-    public Boolean existsById(long id) {
-        return false;
-    }
-
-    @Override
-    public void deleteById(long id) {
-        repo.deleteById(id);
-    }
+//    private final UserRepository repo;
+//
+//
+//
+//    @Override
+//    public String login(String username, String password) throws Exception {
+//        return repo.login(username,password);
+//    }
+//
+//    @Override
+//    public Optional<User> findByUsername(String username) {
+//        return repo.findByUsername(username);
+//    }
+//
+//    @Override
+//    public void deleteByUsername(String username) {
+//        repo.deleteByUsername(username);
+//    }
+//
+//    @Override
+//    public boolean existsByUsername(String username) {
+//        return repo.existsByUsername(username);
+//    }
+//
+//    @Override
+//    public Long save(User entity) {
+//        return (repo.save(entity) != null) ? 1L : 0L;
+//    }
+//
+//    @Override
+//    public Optional<User> findById(long id) {
+//        return repo.findById(id);
+//    }
+//
+//    @Override
+//    public Page<User> findAll(Pageable pageable) {
+//        return null;
+//    }
+//
+//    @Override
+//    public int count() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public Optional<User> getOne(long id) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Long delete(User user) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Boolean existsById(long id) {
+//        return false;
+//    }
+//
+//    @Override
+//    public void deleteById(long id) {
+//        repo.deleteById(id);
+//    }
 }
