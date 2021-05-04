@@ -13,6 +13,4 @@ public class LoginRuntimeException extends RuntimeException {
     public LoginRuntimeException(String message) {
         super(message);
     }
-
-
 }

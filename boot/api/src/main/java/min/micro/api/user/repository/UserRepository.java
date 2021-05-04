@@ -1,6 +1,7 @@
 package min.micro.api.user.repository;
 
 import min.micro.api.user.domain.UserDto;
+import min.micro.api.user.domain.UserVo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,12 +11,15 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<UserVo, Long> {
+
+    boolean existsByUsername(String username);
+
+    UserVo findByUsername(String username);
 
 
-//    @Transactional
-//    @Query(value="select username from users where username= :username and password= :password", nativeQuery = true )
-//    String login(@Param("username") String username, @Param("password") String password);
+    @Query(value="select username from users where username= :username and password= :password", nativeQuery = true )
+    UserVo signin(@Param("username") String username, @Param("password") String password);
 
 //
 //    @Transactional

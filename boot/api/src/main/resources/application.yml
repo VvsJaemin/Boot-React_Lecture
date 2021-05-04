@@ -10,3 +10,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+UserController:
+  signup: Creates user and returns its JWT token
+  signin: Authenticates user and returns its JWT token
+
+#  @ApiOperation value값 호출 할수 있게 스웨거 매칭

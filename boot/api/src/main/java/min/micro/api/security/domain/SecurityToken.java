@@ -4,9 +4,11 @@ import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Log
 public class SecurityToken {
@@ -27,7 +29,6 @@ public class SecurityToken {
 
     public String createToken() {
         try {
-
             Map<String, Object> headers = new HashMap<>();
             headers.put("alg", "HS256"); // 알고리즘
             headers.put("typ", "JWT"); // 타입 ---> 헤더에 key, value(알고리즘, 토큰 타입)로 생성 -> json(jwt)
