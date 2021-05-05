@@ -45,7 +45,7 @@ public class SecurityProvider implements AuthenticationProvider {
         return false;
     }
 
-    @PostConstruct
+    @PostConstruct // DI 이후 초기화를 수행하는 어노테이션, 클래스가 service를 수행하기(서비스 로직에 들어가기)전에 발생
     protected void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }

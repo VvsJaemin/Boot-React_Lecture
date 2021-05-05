@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.nio.file.AccessDeniedException;
 
 @Slf4j
-@ControllerAdvice
+@ControllerAdvice // 전역에서 발생할 수 있는 예외를 잡아 처리
 public class SecurityExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(RuntimeException.class) // @RestController가 적용된 Bean 내에서 발생하는 예외를 잡아 처리
     protected ResponseEntity<Messenger> handleRuntimeException(RuntimeException e) {
         log.info("handleRuntimeException", e);
 
@@ -29,6 +29,7 @@ public class SecurityExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
 
     @ExceptionHandler(SecurityException.class)

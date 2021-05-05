@@ -13,7 +13,6 @@ import java.util.Optional;
 @Log
 public class SecurityToken {
 
-
     private final String token;
 
     private final String key;

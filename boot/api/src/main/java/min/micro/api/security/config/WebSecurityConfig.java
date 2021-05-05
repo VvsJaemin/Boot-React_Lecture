@@ -17,7 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 // 인터셉터 생성
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity // boot - security 결합하는 어노테이션
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -43,9 +43,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable(); // 먼저 csrf 사용 불가 설정
+        //sessionCre...-> 시큐리티가 생성하지도 않고 기존 것을 사용하지도 않음(JWT 토큰 방식)
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests()
-                .antMatchers("/users/signin").permitAll()
+        http.authorizeRequests() // 시큐리티 처리에 HttpServletRequest를 이용
+                .antMatchers("/users/signin").permitAll() // 특정경로 지정
                 .antMatchers("/users/signup").permitAll()
                 .antMatchers("/h2-console/**/**").permitAll()
                 .anyRequest().authenticated();
@@ -56,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
-                .antMatchers(HttpMethod.OPTIONS, "/*/**") // 모든 곳에서 접속
+                .antMatchers(HttpMethod.OPTIONS, "/*/**") // 모든 곳에서 접속 가능(시큐리티가 무시)
                 .antMatchers("/", "/h2-console/**");
     }
 }
