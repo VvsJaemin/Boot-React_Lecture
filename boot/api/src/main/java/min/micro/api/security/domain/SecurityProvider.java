@@ -23,10 +23,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
 @Component
 @RequiredArgsConstructor
 public class SecurityProvider implements AuthenticationProvider {
-
+    // 스프링으로 프로퍼티를 읽을 때 @Value 어노테이션 사용
     @Value("${security.jwt.token.secret-key:secret-key}")
     private String secretKey;
 
@@ -68,10 +69,12 @@ public class SecurityProvider implements AuthenticationProvider {
 
     }
 
+
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = service.loadUserByUsername(getUsername(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
+
 
     public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();

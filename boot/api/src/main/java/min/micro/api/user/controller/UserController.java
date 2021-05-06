@@ -42,9 +42,9 @@ public class UserController {
         return ResponseEntity.ok(userService.signin(modelMapper.map(user, UserVo.class))); // 컴파일 이후에 연결(after mapping)
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<UserVo>> fetch(@RequestBody UserVo user) {
-        return ResponseEntity.ok(null);
+    @GetMapping("/fetch")
+    public ResponseEntity<List<UserVo>> fetch() {
+        return ResponseEntity.ok(userService.findAll());
     }
 
 

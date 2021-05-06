@@ -25,6 +25,9 @@ const Body =()=>{
                         <li>
                         <Link to={'/user/user-login'}>로그인</Link>
                         </li>
+                        <li>
+                        <Link to={'/user/user-list'}>회원목록</Link>
+                        </li>
                         <Link to={'/qbs/qna-register'}>Q&A</Link>
                         <li>
                             <Link to={'/board/news'}>Board</Link>
@@ -41,17 +44,8 @@ const Body =()=>{
                         <li>
                             <Link to={'/counter/redux-counter'}>ReduxCounter</Link>
                         </li>
-                        <li>
-            <Link to={'/todos/to-do'}>Todo</Link>
-            </li>
-            <li>
-            <Link to={'/todos/to-dos'}>todos</Link> 
-            </li>
             <li>
             <Link to={'/todos/todo-app'}>TodoApp</Link> 
-            </li>
-            <li>
-            <Link to={'/todos/app-todo'}>AppTodo</Link> 
             </li>
                     </ul>
                 </div>

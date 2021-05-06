@@ -21,6 +21,7 @@ public enum Role implements GrantedAuthority {
         return Arrays.stream(Role.values()).filter(i -> i.getCode().equals(code)).findAny().orElse(UNKNOWN);
     } // 배열로 리턴한다.
 
+
     @Override
     public String getAuthority() {
         return name();

@@ -2,7 +2,7 @@ package min.micro.api.user.service;
 
 import lombok.RequiredArgsConstructor;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.java.Log;
 import min.micro.api.security.domain.SecurityProvider;
 import min.micro.api.security.exception.SecurityRuntimeException;
 import min.micro.api.user.domain.Role;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Slf4j
+@Log
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -49,7 +49,8 @@ public class UserServiceImpl implements UserService {
         try {
             UserVo loginedUser = userRepository.signin(user.getUsername(), user.getPassword());
             UserDto userDto = modelMapper.map(user, UserDto.class);
-            String token = provider.createToken(user.getUsername(), userRepository.findByUsername(user.getUsername()).getRoles());
+            String token = provider.createToken(user.getUsername(),
+                    userRepository.findByUsername(user.getUsername()).getRoles());
             log.info("ISSUED TOKEN :::::::: " + token);
             userDto.setToken(token);
             return userDto;
@@ -57,7 +58,13 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             throw new SecurityRuntimeException("Invalid Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
         }
+            // 보안성 향상 - vo를 감싸기 위해 모델 맵퍼를 사용하여 dto로 던진다.
+    }
 
+    @Override
+    public List<UserVo> findAll() {
+//        repo.findAll().stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList())
+        return userRepository.findAll();
     }
 
 }
