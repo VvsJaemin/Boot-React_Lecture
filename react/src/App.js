@@ -6,7 +6,7 @@ import {NewsBoard, SeoulCCTV} from 'board/index'
 import {Home, Head, Body, Footer} from 'common/index'
 import {Counter, CounterContainer, CounterSliceContainer, ReduxCounter} from 'counter/index'
 import {AddTodo, TodoApp, Todos} from 'todos/index'
-import {UserRegister, UserLogin, UserList} from 'user/index'
+import {UserRegister, UserLogin, UserList} from 'users/index'
 import { QnaList, QnaRegister } from 'qbs/index';
 
 const App = () => {
@@ -28,9 +28,9 @@ const App = () => {
             <Route exact="exact" path='/user/sign-up' component={SignUp}></Route>
             <Route exact="exact" path='/user/user-detail' component={UserDetail}></Route> */}
 
-            <Route exact path='/user/user-login' component={UserLogin}></Route>
-            <Route exact path='/user/user-register' component={UserRegister}></Route>
-            <Route exact path='/user/user-list' component={UserList}></Route>
+            <Route exact path='/users/user-login' component={UserLogin}></Route>
+            <Route exact path='/users/user-register' component={UserRegister}></Route>
+            <Route exact path='/users/user-list' component={UserList}></Route>
 
             <Route exact path='/qbs/qna-register' component={QnaRegister}></Route>
             <Route exact path='/qbsr/qna-list' component={QnaList}></Route>

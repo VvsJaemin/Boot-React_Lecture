@@ -20,13 +20,13 @@ const Body =()=>{
                 <div className="collapse navbar-collapse" id="myNavbar">
                     <ul className="nav navbar-nav navbar-right">
                         <li>
-                            <Link to={'/user/user-register'}>회원가입</Link>
+                            <Link to={'/users/user-register'}>회원가입</Link>
                         </li>
                         <li>
-                        <Link to={'/user/user-login'}>로그인</Link>
+                        <Link to={'/users/user-login'}>로그인</Link>
                         </li>
                         <li>
-                        <Link to={'/user/user-list'}>회원목록</Link>
+                        <Link to={'/users/user-list'}>회원목록</Link>
                         </li>
                         <Link to={'/qbs/qna-register'}>Q&A</Link>
                         <li>

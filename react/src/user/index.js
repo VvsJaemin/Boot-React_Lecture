@@ -1,5 +1,0 @@
-export {default as UserList} from 'user/component/UserList'
-export {default as UserLogin} from 'user/component/UserLogin'
-export {default as UserModify} from 'user/component/UserModify'
-export {default as UserRead} from 'user/component/UserRead'
-export {default as UserRegister} from 'user/component/UserRegister'

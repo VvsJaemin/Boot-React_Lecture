@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/users")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Api(tags = "users")
 public class UserController {
 
@@ -42,8 +42,8 @@ public class UserController {
         return ResponseEntity.ok(userService.signin(modelMapper.map(user, UserVo.class))); // 컴파일 이후에 연결(after mapping)
     }
 
-    @GetMapping("/fetch")
-    public ResponseEntity<List<UserVo>> fetch() {
+    @GetMapping("/findAll")
+    public ResponseEntity<List<UserVo>> findAll() {
         return ResponseEntity.ok(userService.findAll());
     }
 

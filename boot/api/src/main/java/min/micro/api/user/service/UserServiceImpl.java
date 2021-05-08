@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Log
@@ -63,9 +64,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserVo> findAll() {
-//        repo.findAll().stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList())
         return userRepository.findAll();
     }
+
+    @Override
+    public List<UserDto> fetch(UserVo user) {
+        return userRepository.findAll().stream().map(u->modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+    }
+
 
 }
 

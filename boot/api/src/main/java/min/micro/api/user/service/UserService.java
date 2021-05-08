@@ -10,5 +10,6 @@ public interface UserService {
     String signup(UserVo user);
     UserDto signin(UserVo user);
     List<UserVo> findAll();
+    List<UserDto>fetch(UserVo user);
 
 }

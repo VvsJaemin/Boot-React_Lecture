@@ -48,7 +48,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests() // 시큐리티 처리에 HttpServletRequest를 이용
                 .antMatchers("/users/signin").permitAll() // 특정경로 지정
                 .antMatchers("/users/signup").permitAll()
-//                .antMatchers("/users/fetch").permitAll()
+                .antMatchers("/users/findAll").permitAll()
                 .antMatchers("/h2-console/**/**").permitAll()
                 .anyRequest().authenticated();
         http.exceptionHandling().accessDeniedPage("/login");

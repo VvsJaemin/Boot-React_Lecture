@@ -2,49 +2,28 @@ import React, {useState, useCallback} from 'react'
 import {Link} from 'react-router-dom';
 import axios from 'axios'
 
-const UserRegister = (props) => {
-    const [register, setRegister] = useState({})
-
-    const {
-        username,
-        password,
-        name,
-        email,
-        birthday,
-        gender
+import {getUserSignUp} from '../reducer/user.reducer'
+import { useDispatch } from 'react-redux';
+const UserRegister = () => {
     
-    } = register
+    const [input, setInput] = useState({
+        username: '',
+        password : '',
+        name : "",
+        email : ""
+    })
 
-    const Register = e => {
-        e.preventDefault()
-        axios
-            .post(`http://localhost:8080/user`, {
-                username,
-                password,
-                name,
-                email,
-                birthday,
-                gender
-            })
-            .then(res => {
-                console.log(res)
-                alert("회원가입을 해주셔서 감사합니다.")
-                props
-                    .history
-                    .push('/')
-            })
-            .catch(() => {
-                alert("양식에 맞게 입력해주세요")
-            })
-        }
-
+    const dispatch = useDispatch()
+    
     const handleSubmit = useCallback(e => {
         const {name, value} = e.target
-        setRegister({
-            ...register,
+        setInput({
+            ...input,
             [name]: value
         })
-    }, [register])
+    }, [input])
+
+    
 
     return (
         <form>
@@ -59,7 +38,7 @@ const UserRegister = (props) => {
                             type='text'
                             placeholder='아이디를 입력(10자이내)'
                             name='username'
-                            value={register.username}
+                            value={input.username}
                             onChange={handleSubmit}/></td>
                     </tr>
                     <tr>
@@ -70,7 +49,7 @@ const UserRegister = (props) => {
                             type='password'
                             placeholder='비밀번호를 입력하세요'
                             name='password'
-                            value={register.password}
+                            value={input.password}
                             onChange={handleSubmit}/></td>
                     </tr>
                     <tr>
@@ -80,7 +59,7 @@ const UserRegister = (props) => {
                         <td><input
                             type='text'
                             name='name'
-                            value={register.name}
+                            value={input.name}
                             onChange={handleSubmit}/></td>
                     </tr>
                     <tr>
@@ -91,10 +70,10 @@ const UserRegister = (props) => {
                             type='text'
                             placeholder='이메일을 입력하세요'
                             name='email'
-                            value={register.email}
+                            value={input.email}
                             onChange={handleSubmit}/></td>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <th>
                             생년월일
                         </th>
@@ -115,10 +94,10 @@ const UserRegister = (props) => {
                                 <option value="여성">여성</option>
                             </select>
                         </td>
-                    </tr>
+                    </tr> */}
                     <tr>
                         <td>
-                            <input type='button' onClick={Register} value='등록'/>
+                            <input type='button' onClick={() => dispatch(getUserSignUp())} value='등록'/>
                         </td>
                         <td>
                             <Link to="/QnaList">
