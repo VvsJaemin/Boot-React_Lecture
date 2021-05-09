@@ -10,7 +10,7 @@ const UserList = () => {
         return state.users
     })
 
-    const dispatch = useDispatch()
+   const dispatch = useDispatch
 
    useEffect(() => {
        alert('1.useEffect')

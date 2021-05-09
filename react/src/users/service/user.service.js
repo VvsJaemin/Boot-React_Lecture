@@ -9,4 +9,4 @@ const signUp=(user)=>{
     return axios.post("http://localhost:8080/users/signup", user)
 }
 
-export default {findAll,signUp}
+export default {findAll, signUp}

@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import {getUserSignUp} from '../reducer/user.reducer'
 import { useDispatch } from 'react-redux';
+
 const UserRegister = () => {
     
     const [input, setInput] = useState({
@@ -97,7 +98,7 @@ const UserRegister = () => {
                     </tr> */}
                     <tr>
                         <td>
-                            <input type='button' onClick={() => dispatch(getUserSignUp())} value='등록'/>
+                            <input type='button' onClick={()=>dispatch(getUserSignUp())} value='등록'/>
                         </td>
                         <td>
                             <Link to="/QnaList">

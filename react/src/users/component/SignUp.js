@@ -2,12 +2,15 @@
 import React, { useCallback, useState } from 'react';
 import axios from 'axios';
 const SignUp = () => {
+
     const [inputs, setInputs] = useState({
         username: '',
         password: '',
         userEmail: '',
     });
-    const { username, password, userEmail } = inputs;
+
+    const {username, password, userEmail} = inputs
+    
     const handleChange = useCallback(
         (e) => {
             const { value, name } = e.target;
