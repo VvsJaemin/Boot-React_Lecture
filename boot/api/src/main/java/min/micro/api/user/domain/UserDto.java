@@ -28,5 +28,4 @@ public class UserDto {
     @ApiModelProperty(position = 5)
     private List<Role> roles;
 
-
 }

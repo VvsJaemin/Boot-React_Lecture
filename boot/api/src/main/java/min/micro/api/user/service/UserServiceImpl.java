@@ -48,18 +48,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto signin(UserVo user) {
         try {
-            UserVo loginedUser = userRepository.signin(user.getUsername(), user.getPassword());
-            UserDto userDto = modelMapper.map(user, UserDto.class);
-            String token = provider.createToken(user.getUsername(),
-                    userRepository.findByUsername(user.getUsername()).getRoles());
-            log.info("ISSUED TOKEN :::::::: " + token);
-            userDto.setToken(token);
-            return userDto;
+//            UserDto userDto = modelMapper.map(user, UserDto.class);
+            UserVo userVo = userRepository.findByUsername(user.getUsername()).get();
+                        UserDto userDto = modelMapper.map(userVo, UserDto.class);
+            userDto.setToken(
+                    (passwordEncoder.matches(user.getPassword(),userVo.getPassword())
+                            ?
+                    provider.createToken(user.getUsername(), userVo.getRoles())
+                    : "WRONG_PASSWORD"));
 
+            return userDto;
         } catch (Exception e) {
             throw new SecurityRuntimeException("Invalid Username / Password supplied", HttpStatus.UNPROCESSABLE_ENTITY);
         }
-            // 보안성 향상 - vo를 감싸기 위해 모델 맵퍼를 사용하여 dto로 던진다.
     }
 
     @Override
@@ -69,7 +70,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> fetch(UserVo user) {
-        return userRepository.findAll().stream().map(u->modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+        return userRepository.findAll().stream().map(u -> modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
     }
 
 

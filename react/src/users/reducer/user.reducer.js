@@ -3,7 +3,7 @@ import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import {UserService} from 'users/index'
 
 
-export const getUserList = createAsync("users/findAll",
+export const getUserList = createAsyncThunk("users/findAll",
 async()=>{
     const response = await UserService.findAll()
     return response.data
@@ -32,7 +32,7 @@ const userSlice = createSlice({
         .addCase(getUserSignUp.fulfilled,(state, {payload})=>{
             return[...payload]
         })
-        .addMatcher(isRejectAction, ()=>{})
+        .addMatcher(isRejectAction,()=>{})
         .addDefaultCase((state, payload)=>{})
     },
 })             

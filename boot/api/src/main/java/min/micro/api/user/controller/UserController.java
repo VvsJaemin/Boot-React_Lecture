@@ -29,7 +29,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "Access Denied"),
             @ApiResponse(code = 422, message = "Invaild username/password supplied")})
     public ResponseEntity<String> signup(@ApiParam("Signup User") @RequestBody UserDto user) {
-
+        System.out.println("회원 가입"+user.toString());
         return ResponseEntity.ok(userService.signup(modelMapper.map(user, UserVo.class))); // 컴파일 이후에 연결(after mapping)
     }
 
@@ -38,7 +38,7 @@ public class UserController {
     @ApiResponses(value = {@ApiResponse(code = 400, message = "Something went wrong"),
             @ApiResponse(code = 422, message = "Invaild username/password supplied")})
     public ResponseEntity<UserDto> signin(@ApiParam("signin User") @RequestBody UserDto user) {
-
+        System.out.println("로그인"+user.toString());
         return ResponseEntity.ok(userService.signin(modelMapper.map(user, UserVo.class))); // 컴파일 이후에 연결(after mapping)
     }
 
